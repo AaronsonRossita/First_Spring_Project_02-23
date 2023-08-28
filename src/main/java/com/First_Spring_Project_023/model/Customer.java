@@ -8,13 +8,13 @@ public class Customer {
     private int customerId;
     @JsonProperty("name")
     private String customerName;
-    @JsonProperty("phone")
-    private String customerPhone;
+    @JsonProperty("email")
+    private String customerEmail;
 
     public Customer(int id, String name, String phone) {
         this.customerId = id;
         this.customerName = name;
-        this.customerPhone = phone;
+        this.customerEmail = phone;
     }
 
     public int getCustomerId() {
@@ -33,16 +33,16 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     @Override
     public String toString() {
-        return String.format("%s is a customer with id %s and phone number %s",this.customerName,this.customerId,this.customerPhone);
+        return String.format("%s is a customer with id %s and phone number %s",this.customerName,this.customerId,this.customerEmail);
     }
 }
