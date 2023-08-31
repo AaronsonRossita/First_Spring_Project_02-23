@@ -11,10 +11,10 @@ public class Customer {
     @JsonProperty("email")
     private String customerEmail;
 
-    public Customer(int id, String name, String phone) {
+    public Customer(int id, String name, String email) {
         this.customerId = id;
         this.customerName = name;
-        this.customerEmail = phone;
+        this.customerEmail = email;
     }
 
     public int getCustomerId() {

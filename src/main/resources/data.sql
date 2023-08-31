@@ -16,3 +16,6 @@ CREATE TABLE customer_order(
     PRIMARY KEY (id),
     FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
+
+INSERT INTO customer (full_name, email)
+VALUES ('A AA', '@@'),('B BB', '@@'),('C CC', '@@'),('D DD', '@@');
