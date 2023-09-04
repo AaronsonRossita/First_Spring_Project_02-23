@@ -10,11 +10,14 @@ public class Customer {
     private String customerName;
     @JsonProperty("email")
     private String customerEmail;
+    @JsonProperty("type")
+    private CustomerType customerType;
 
-    public Customer(int id, String name, String email) {
-        this.customerId = id;
-        this.customerName = name;
-        this.customerEmail = email;
+    public Customer(int customerId, String customerName, String customerEmail, CustomerType customerType) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerType = customerType;
     }
 
     public int getCustomerId() {
@@ -39,6 +42,14 @@ public class Customer {
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     @Override

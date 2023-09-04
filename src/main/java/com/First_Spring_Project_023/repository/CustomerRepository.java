@@ -7,8 +7,8 @@ import java.util.List;
 public interface CustomerRepository {
 
     void createCustomer(Customer customer);
-    String deleteCustomerById(int id);
     String updateCustomerName(int id, String name);
+    String deleteCustomerById(int id);
     String updateCustomerEmail(int id, String email);
 
     Customer getCustomerById(int id);

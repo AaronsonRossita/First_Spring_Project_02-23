@@ -5,6 +5,7 @@ CREATE TABLE customer(
     id int NOT NULL AUTO_INCREMENT,
     full_name varchar(255) NOT NULL DEFAULT '',
     email varchar(255) NOT NULL DEFAULT '',
+    status varchar(50) NOT NULL DEFAULT 'REGULAR',
     PRIMARY KEY (id)
 );
 
