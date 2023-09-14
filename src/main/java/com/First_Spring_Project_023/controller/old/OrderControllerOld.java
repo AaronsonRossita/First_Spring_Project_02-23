@@ -23,7 +23,7 @@ public class OrderControllerOld {
             if (order.getItemName() != null){
                 orders.get(id).setItemName(order.getItemName());
             }
-            if (order.getCustomerId() != null){
+            if (order.getCustomerId() != 0){
                 orders.get(id).setCustomerId(order.getCustomerId());
             }
             if (order.getPrice() > 0){
