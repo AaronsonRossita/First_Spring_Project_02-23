@@ -1,4 +1,4 @@
-package com.First_Spring_Project_023.controller;
+package com.First_Spring_Project_023.controller.old;
 
 import com.First_Spring_Project_023.model.Order;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/order")
-public class OrderController {
+public class OrderControllerOld {
 
     static HashMap<Integer, Order> orders = new HashMap<>();
 
@@ -23,8 +23,8 @@ public class OrderController {
             if (order.getItemName() != null){
                 orders.get(id).setItemName(order.getItemName());
             }
-            if (order.getCustomerName() != null){
-                orders.get(id).setCustomerName(order.getCustomerName());
+            if (order.getCustomerId() != null){
+                orders.get(id).setCustomerId(order.getCustomerId());
             }
             if (order.getPrice() > 0){
                 orders.get(id).setPrice(order.getPrice());

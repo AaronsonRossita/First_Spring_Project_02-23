@@ -1,4 +1,4 @@
-package com.First_Spring_Project_023.controller;
+package com.First_Spring_Project_023.controller.old;
 
 import com.First_Spring_Project_023.model.Customer;
 import org.springframework.web.bind.annotation.*;

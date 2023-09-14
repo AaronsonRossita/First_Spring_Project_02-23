@@ -1,8 +1,7 @@
 package com.First_Spring_Project_023.controller;
 
 import com.First_Spring_Project_023.model.Customer;
-import com.First_Spring_Project_023.repository.CustomerRepository;
-import com.First_Spring_Project_023.repository.CustomerRepositoryImpl;
+import com.First_Spring_Project_023.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +12,16 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerService customerService;
 
     @PostMapping
-    public void createCustomer(@RequestBody Customer customer){
-        customerRepository.createCustomer(customer);
+    public String createCustomer(@RequestBody Customer customer){
+        return customerService.createCustomer(customer);
     }
 
     @DeleteMapping
     public String deleteCustomerById(@RequestParam int id){
-        return customerRepository.deleteCustomerById(id);
+        return customerService.deleteCustomerById(id);
     }
 
 //    @PutMapping
@@ -35,7 +34,7 @@ public class CustomerController {
         if (customer.getCustomerId() == 0 || customer.getCustomerName() == null){
             return "Can't change stuff to null";
         }else{
-            return customerRepository.updateCustomerName(customer.getCustomerId(),customer.getCustomerName());
+            return customerService.updateCustomerName(customer.getCustomerId(),customer.getCustomerName());
         }
     }
 
@@ -44,7 +43,7 @@ public class CustomerController {
         if (customer.getCustomerId() == 0 || customer.getCustomerEmail() == null){
             return "Can't change stuff to null";
         }else{
-            return customerRepository.updateCustomerEmail(customer.getCustomerId(),customer.getCustomerEmail());
+            return customerService.updateCustomerEmail(customer.getCustomerId(),customer.getCustomerEmail());
         }
 
     }
@@ -52,17 +51,17 @@ public class CustomerController {
 
     @GetMapping
     public Customer getCustomerById(@RequestParam int id){
-        return customerRepository.getCustomerById(id);
+        return customerService.getCustomerById(id);
     }
 
     @GetMapping(value = "/all")
     public List<Customer> getAllCustomers(){
-        return customerRepository.getAllCustomers();
+        return customerService.getAllCustomers();
     }
 
     @GetMapping(value = "/names")
     public List<String> getAllCustomerName(){
-        return customerRepository.getAllCustomerNames();
+        return customerService.getAllCustomerNames();
     }
 
 

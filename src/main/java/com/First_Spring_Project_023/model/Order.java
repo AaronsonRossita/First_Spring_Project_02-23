@@ -4,14 +4,14 @@ public class Order {
 
     private int id;
     private String itemName;
-    private String customerName;
+    private int customerId;
     private double price;
 
 
-    public Order(int id, String itemName, String customerName, double price) {
+    public Order(int id, String itemName, int customerName, double price) {
         this.id = id;
         this.itemName = itemName;
-        this.customerName = customerName;
+        this.customerId = customerName;
         this.price = price;
     }
 
@@ -31,12 +31,12 @@ public class Order {
         this.itemName = itemName;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public double getPrice() {
