@@ -1,6 +1,7 @@
 package com.First_Spring_Project_023.repository;
 
 import com.First_Spring_Project_023.model.Order;
+import com.First_Spring_Project_023.repository.mapper.OrderMapper;
 import com.First_Spring_Project_023.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -46,26 +47,31 @@ public class OrderRepositoryImpl implements OrderRepository{
 
     @Override
     public List<Order> getAllOrders() {
-        return null;
+        String sql = "SELECT * FROM " + Constants.ORDER_TABLE_NAME;
+        return jdbcTemplate.query(sql,new OrderMapper());
     }
 
     @Override
     public Order getOrderById(int id) {
-        return null;
+        String sql = "SELECT * FROM " + Constants.ORDER_TABLE_NAME + " WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql,new OrderMapper(),id);
     }
 
     @Override
     public List<Order> getOrdersByCustomerId(int id) {
-        return null;
+        String sql = "SELECT * FROM " + Constants.ORDER_TABLE_NAME + " WHERE customer_id = ?";
+        return jdbcTemplate.query(sql, new OrderMapper(), id);
     }
 
     @Override
     public List<String> getItemNames() {
-        return null;
+        String sql = "SELECT item_name FROM " + Constants.ORDER_TABLE_NAME;
+        return jdbcTemplate.queryForList(sql,String.class);
     }
 
     @Override
-    public int getSumOfPrice() {
-        return 0;
+    public Integer getSumOfPrice() {
+        String sql = "SELECT sum(item_price) FROM " + Constants.ORDER_TABLE_NAME;
+        return jdbcTemplate.queryForObject(sql,Integer.class);
     }
 }

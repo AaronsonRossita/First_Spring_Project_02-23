@@ -4,6 +4,8 @@ import com.First_Spring_Project_023.model.Customer;
 import com.First_Spring_Project_023.model.CustomerType;
 import com.First_Spring_Project_023.repository.CustomerRepositoryImpl;
 import com.First_Spring_Project_023.utils.Constants;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +16,37 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
     private CustomerRepositoryImpl customerRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
     @Override
     public String createCustomer(Customer customer) {
         if (customer.getCustomerType() == CustomerType.VIP){
             if(customerRepository.getAllCustomersByType(CustomerType.VIP).size() < Constants.MAX_VIP){
+                try {
+                    String customerAsString = objectMapper.writeValueAsString(customer);
+                    System.out.println(customerAsString);
+                    Customer customerFromString = objectMapper.readValue(customerAsString,Customer.class);
+                    System.out.println(customerFromString.getCustomerName());
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
                 return customerRepository.createCustomer(customer);
             }else{
                 return "Sorry can't create more VIP customers";
             }
         }else {
+            try {
+                String customerAsString = objectMapper.writeValueAsString(customer);
+                System.out.println(customerAsString);
+                Customer customerFromString = objectMapper.readValue(customerAsString,Customer.class);
+                System.out.println(customerFromString.getCustomerName());
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
             return customerRepository.createCustomer(customer);
         }
+
     }
 
     @Override

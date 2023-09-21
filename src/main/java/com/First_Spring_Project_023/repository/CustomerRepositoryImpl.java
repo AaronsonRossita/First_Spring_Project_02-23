@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public String createCustomer(Customer customer) {
@@ -85,6 +85,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         sql = "SELECT * FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE status = ?";
         return jdbcTemplate.query(sql,new CustomerMapper(),type.name());
     }
+
 }
 
 // queryForObject = returns one object

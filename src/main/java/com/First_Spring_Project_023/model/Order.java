@@ -8,10 +8,10 @@ public class Order {
     private double price;
 
 
-    public Order(int id, String itemName, int customerName, double price) {
+    public Order(int id, String itemName, int customerId, double price) {
         this.id = id;
         this.itemName = itemName;
-        this.customerId = customerName;
+        this.customerId = customerId;
         this.price = price;
     }
 

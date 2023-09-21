@@ -17,6 +17,6 @@ public interface OrderRepository {
     Order getOrderById(int id);
     List<Order> getOrdersByCustomerId(int id);
     List<String> getItemNames();
-    int getSumOfPrice();
+    Integer getSumOfPrice();
 
 }
