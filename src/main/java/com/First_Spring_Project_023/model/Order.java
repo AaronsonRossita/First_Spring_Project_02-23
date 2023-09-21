@@ -1,9 +1,13 @@
 package com.First_Spring_Project_023.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Order {
 
     private int id;
+    @JsonProperty("item_name")
     private String itemName;
+    @JsonProperty("customer_id")
     private int customerId;
     private double price;
 

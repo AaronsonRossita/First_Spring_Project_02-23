@@ -1,6 +1,7 @@
 package com.First_Spring_Project_023.repository;
 
 import com.First_Spring_Project_023.model.Order;
+import com.First_Spring_Project_023.model.OrderRequest;
 import com.First_Spring_Project_023.repository.mapper.OrderMapper;
 import com.First_Spring_Project_023.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;

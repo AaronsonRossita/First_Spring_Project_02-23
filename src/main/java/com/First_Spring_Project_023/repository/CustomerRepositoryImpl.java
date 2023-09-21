@@ -5,6 +5,7 @@ import com.First_Spring_Project_023.model.CustomerType;
 import com.First_Spring_Project_023.repository.mapper.CustomerMapper;
 import com.First_Spring_Project_023.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,10 +18,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String createCustomer(Customer customer) {
+    public int createCustomer(Customer customer) {
         String sql = "INSERT INTO " + Constants.CUSTOMER_TABLE_NAME + " (full_name, email, status) VALUES (?,?,?)";
         jdbcTemplate.update(sql,customer.getCustomerName(),customer.getCustomerEmail(),customer.getCustomerType().name());
-        return "Customer successfully created";
+        sql = "SELECT id FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE full_name = ?";
+        return jdbcTemplate.queryForObject(sql,Integer.class,customer.getCustomerName());
     }
 
     @Override
@@ -56,7 +58,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Customer getCustomerById(int id) {
         String sql = "SELECT * FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql,new CustomerMapper(),id);
+        try{
+            return jdbcTemplate.queryForObject(sql,new CustomerMapper(),id);
+        }catch (EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     @Override
