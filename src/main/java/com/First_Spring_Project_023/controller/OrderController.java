@@ -1,6 +1,7 @@
 package com.First_Spring_Project_023.controller;
 
 import com.First_Spring_Project_023.model.OrderRequest;
+import com.First_Spring_Project_023.model.OrderResponse;
 import com.First_Spring_Project_023.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,8 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public void createOrder(@RequestBody OrderRequest orderRequest){
-        orderService.createOrder(orderRequest);
+    public OrderResponse createOrder(@RequestBody OrderRequest orderRequest){
+        return orderService.createOrder(orderRequest);
     }
 
 }

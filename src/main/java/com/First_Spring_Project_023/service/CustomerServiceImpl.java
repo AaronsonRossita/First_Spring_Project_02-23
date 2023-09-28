@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService{
     @Autowired
     private ObjectMapper objectMapper;
     @Override
-    public int createCustomer(Customer customer) {
+    public Integer createCustomer(Customer customer) {
         if (customer.getCustomerType() == CustomerType.VIP){
             if(customerRepository.getAllCustomersByType(CustomerType.VIP).size() < Constants.MAX_VIP){
                 try {
@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Customer getCustomerById(int id) {
+    public Customer getCustomerById(Integer id) {
         return customerRepository.getCustomerById(id);
     }
 

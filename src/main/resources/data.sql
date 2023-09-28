@@ -19,4 +19,7 @@ CREATE TABLE customer_order(
 );
 
 INSERT INTO customer (full_name, email)
-VALUES ('A AA', '@@'),('B BB', '@@'),('C CC', '@@'),('D DD', '@@');
+VALUES ('A AA', 'a@'),('B BB', 'b@'),('C CC', 'c@'),('D DD', 'd@');
+
+INSERT INTO customer_order (item_name, item_price, customer_id)
+VALUES ('sofa', 20, 1),('sofa', 20, 2),('chair', 30, 2),('chair', 30, 3);

@@ -18,11 +18,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int createCustomer(Customer customer) {
+    public Integer createCustomer(Customer customer) {
         String sql = "INSERT INTO " + Constants.CUSTOMER_TABLE_NAME + " (full_name, email, status) VALUES (?,?,?)";
         jdbcTemplate.update(sql,customer.getCustomerName(),customer.getCustomerEmail(),customer.getCustomerType().name());
-        sql = "SELECT id FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE full_name = ?";
-        return jdbcTemplate.queryForObject(sql,Integer.class,customer.getCustomerName());
+        sql = "SELECT id FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE email = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, customer.getCustomerEmail());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer getCustomerById(int id) {
+    public Customer getCustomerById(Integer id) {
         String sql = "SELECT * FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE id = ?";
         try{
             return jdbcTemplate.queryForObject(sql,new CustomerMapper(),id);
