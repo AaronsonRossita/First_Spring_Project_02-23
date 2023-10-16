@@ -6,7 +6,7 @@ import java.util.List;
 public class OrderResponse {
 
     private Customer customer;
-    private List orders;
+    private List<Order> orders;
 
     public OrderResponse(Customer customer, List<Order> orders) {
         this.customer = customer;
@@ -21,7 +21,7 @@ public class OrderResponse {
         this.customer = customer;
     }
 
-    public List getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 

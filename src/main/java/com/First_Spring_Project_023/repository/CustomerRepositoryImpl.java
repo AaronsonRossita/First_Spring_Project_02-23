@@ -21,8 +21,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Integer createCustomer(Customer customer) {
         String sql = "INSERT INTO " + Constants.CUSTOMER_TABLE_NAME + " (full_name, email, status) VALUES (?,?,?)";
         jdbcTemplate.update(sql,customer.getCustomerName(),customer.getCustomerEmail(),customer.getCustomerType().name());
-        sql = "SELECT id FROM " + Constants.CUSTOMER_TABLE_NAME + " WHERE email = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, customer.getCustomerEmail());
+        sql = "SELECT MAX(id) FROM " + Constants.CUSTOMER_TABLE_NAME;
+        return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     @Override
