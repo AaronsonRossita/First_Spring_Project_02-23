@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "tvMazeService",
-        url = "https://api.tvmaze.com/"
+        url = "${tvmaze.url}"
 )
 public interface TvMazeService {
 

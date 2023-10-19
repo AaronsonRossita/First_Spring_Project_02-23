@@ -13,3 +13,9 @@ spring:
     console:
       enabled: true
 
+tvmaze:
+  url: "https://api.tvmaze.com/"
+
+lastfm:
+  url: "https://ws.audioscrobbler.com/2.0/"
+
