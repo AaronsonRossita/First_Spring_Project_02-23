@@ -13,6 +13,11 @@ spring:
     console:
       enabled: true
 
+redis:
+  host: localhost
+  port: 6379
+  ttl: 5000
+
 tvmaze:
   url: "https://api.tvmaze.com/"
 

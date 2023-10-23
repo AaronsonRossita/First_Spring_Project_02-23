@@ -3,6 +3,7 @@ package com.First_Spring_Project_023.controller;
 import com.First_Spring_Project_023.model.OrderRequest;
 import com.First_Spring_Project_023.model.OrderResponse;
 import com.First_Spring_Project_023.service.OrderService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public OrderResponse createOrder(@RequestBody OrderRequest orderRequest){
+    public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) throws JsonProcessingException {
         return orderService.createOrder(orderRequest);
     }
 

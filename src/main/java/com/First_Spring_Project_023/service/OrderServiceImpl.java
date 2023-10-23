@@ -5,6 +5,7 @@ import com.First_Spring_Project_023.model.Order;
 import com.First_Spring_Project_023.model.OrderRequest;
 import com.First_Spring_Project_023.model.OrderResponse;
 import com.First_Spring_Project_023.repository.OrderRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class OrderServiceImpl implements OrderService{
     private CustomerService customerService;
 
     @Override
-    public OrderResponse createOrder(OrderRequest orderRequest) {
+    public OrderResponse createOrder(OrderRequest orderRequest) throws JsonProcessingException {
         Customer customer = orderRequest.getCustomer();
         Order order = orderRequest.getOrder();
         OrderResponse orderResponse;

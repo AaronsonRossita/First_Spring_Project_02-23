@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Customer getCustomerById(Integer id) {
+    public Customer getCustomerById(Integer id) throws JsonProcessingException {
         return customerRepository.getCustomerById(id);
     }
 

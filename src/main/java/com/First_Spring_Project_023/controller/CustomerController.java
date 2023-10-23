@@ -2,6 +2,7 @@ package com.First_Spring_Project_023.controller;
 
 import com.First_Spring_Project_023.model.Customer;
 import com.First_Spring_Project_023.service.CustomerService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,7 +51,7 @@ public class CustomerController {
 
 
     @GetMapping
-    public Customer getCustomerById(@RequestParam int id){
+    public Customer getCustomerById(@RequestParam int id) throws JsonProcessingException {
         return customerService.getCustomerById(id);
     }
 
